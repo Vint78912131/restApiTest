@@ -1,0 +1,8 @@
+image: maven:latest
+
+default:
+  tags:
+    - shelllocal
+
+stages:
+  - test
