@@ -29,6 +29,7 @@ public class Services {
     @Test
     @DisplayName("Get services info")
     @Epic(value = "Cluster Services")
+    @Story("Services")
     @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#b9083ff3-0c86-4fd1-b01f-0937b1f19571")
     @Feature("Storage Services info")
     @Description("Get Storage services info")

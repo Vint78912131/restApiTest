@@ -9,22 +9,9 @@ import org.junit.jupiter.api.Test;
 
 public class ISCSI {
     @BeforeEach
-    public void setCookies () {
-        RestAssured.baseURI = TestStorage.endpoint;
-        JSONObject requestBody = new JSONObject()
-                .put("password", "1234")
-                .put("username", "root");
-        TestStorage.cookies = RestAssured
-                .given()
-                .contentType("application/json")
-                .body(requestBody.toString())
-                .when()
-                .post("/api/v2/login/")
-                .getDetailedCookies().toString();
-        TestStorage.cluster_id = 3;
-        TestStorage.cluster_name = "newCluster";
+    public void preparation() {
+        TestStorage.setCookies();
     }
-
     @Test
     @DisplayName("Get iSCSI users info")
     @Epic(value = "Cluster iSCSI")
