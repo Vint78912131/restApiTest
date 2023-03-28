@@ -50,7 +50,6 @@ public class Nodes {
     @Description("Get Nodes list")
     @Severity(SeverityLevel.MINOR)
     public void getNodesList() {
-
         Response response = RestAssured
                 .given()
                 .cookie(TestStorage.cookies)
@@ -75,6 +74,221 @@ public class Nodes {
     }
 
 
+    @Test
+    @DisplayName("Register new Node in cluster")
+    @Epic(value = "Nodes Nodes")
+    @Story("Nodes")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#a0bead07-901e-48e5-9d39-075b7de70b6a")
+    @Feature("Register new Node in cluster")
+    @Description("Register new Node")
+    @Severity(SeverityLevel.MINOR)
+    public void setNewNode() {
+        String requestBody = "{" +
+                "\"nodes\":[{\"host\" :\"192.168.12.49\"," +
+                "\"password\": \"1234\"," +
+                "\"port\": \"8888\"}]}";
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .body(requestBody)
+                .when()
+                .post("/api/v2/nodes/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(405)
+//                    .contentType("application/json")
+//                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+
+    @Test
+    @DisplayName("Get Node detail info")
+    @Epic(value = "Nodes Nodes")
+    @Story("Nodes")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#b6daa03f-b91d-4c40-83eb-05930f0dbab4")
+    @Feature("Get detail info about Node")
+    @Description("Get Node detail info")
+    @Severity(SeverityLevel.MINOR)
+    public void getNodeInfo() {
+
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(200)
+                    .contentType("application/json")
+                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+    @Test
+    @DisplayName("Get list of all nodes in cluster")
+    @Epic(value = "Nodes Nodes")
+    @Story("Nodes")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#f35db011-cd8c-4f14-9062-ba84242e4e84")
+    @Feature("Get Nodes list by cluster_id")
+    @Description("Get list of all nodes in cluster")
+    @Severity(SeverityLevel.MINOR)
+    public void getNodesClusterList() {
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/" + TestStorage.cluster_id + "nodes/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(404)
+//                    .contentType("application/json")
+//                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+
+    @Test
+    @DisplayName("Get detail info about node services and disks")
+    @Epic(value = "Nodes Node")
+    @Story("Node")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#a5aeae6f-3dc6-47bc-8a63-dd0370270af5")
+    @Feature("Get Node detail info by node_id")
+    @Description("Get detail info about node services and disks")
+    @Severity(SeverityLevel.MINOR)
+    public void getNodeDetailInfo() {
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/" + TestStorage.cluster_id + "nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(404)
+//                    .contentType("application/json")
+//                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+    @Test
+    @DisplayName("Get node network list")
+    @Epic(value = "Nodes Node")
+    @Story("Node")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#945e19c6-fb01-49c7-a5ef-8f4d2848b145")
+    @Feature("Get Node network list by node_id")
+    @Description("Get node network list.")
+    @Severity(SeverityLevel.MINOR)
+    public void getNodeNetworkInfo() {
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/network/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(404)
+//                    .contentType("application/json")
+//                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+
+    @Test
+    @DisplayName("Get node network detail")
+    @Epic(value = "Nodes Node")
+    @Story("Node")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#f0589b45-f35d-4bd7-afa6-c448b3470679")
+    @Feature("Get Node network detail by ifname")
+    @Description("Get node network detail")
+    @Severity(SeverityLevel.MINOR)
+    public void getNodeNetworkDetailInfo() {
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/network/br0/");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(404)
+//                    .contentType("application/json")
+//                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
+
+
+    @Test
+    @DisplayName("Get default ip address for MDS")
+    @Epic(value = "Nodes Node")
+    @Story("Node")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#41c92ba4-8e79-450c-a608-dbc53337e65e")
+    @Feature("Get default ip address for Metadata Server")
+    @Description("Get default ip address for MDS")
+    @Severity(SeverityLevel.MINOR)
+    public void getMDSDefaultIP() {
+        Response response = RestAssured
+                .given()
+                .cookie(TestStorage.cookies)
+                .contentType("application/json")
+                .when()
+                .get("/api/v2/nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/default_mds_ipaddr/");
+        //https://d9d81f0e-389f-414d-87ab-009b1e420516.mock.pstmn.io/api/v2/1/nodes/{{node_id}}/default_mds_ipaddr/
+        //incorrect uri in documentation
+        //{node_id} not needed in request
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(200)
+                    .contentType("application/json")
+                    .statusLine("HTTP/1.1 200 OK")
+            ;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println(response.prettyPrint());
+        }
+    }
 
 
 }
