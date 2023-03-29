@@ -1,4 +1,4 @@
-image: maven:3.8-openjdk-11
+image: maven:3.9.1-openjdk-11
 
 default:
   tags:
@@ -43,7 +43,7 @@ allure report:
 #  allow_failure: true
   script:
     - ./maven allure generate
-    - - echo "Allure report live here - https://${CI_PROJECT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_NAME}/-/jobs/${CI_JOB_ID}/artifacts/target/site/allure-maven-plugin/index.html"
+    - echo "Allure report live here - https://${CI_PROJECT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_NAME}/-/jobs/${CI_JOB_ID}/artifacts/target/site/allure-maven-plugin/index.html"
   artifacts:
     when: always
     paths:
