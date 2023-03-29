@@ -1,4 +1,4 @@
-image: maven:3.8-openjdk-11
+image: Apache Maven 3.9.1
 
 default:
   tags:
@@ -28,7 +28,7 @@ testAuthorization test:
   script: mvn -x test Authorization
   artifacts:
     paths:
-      -target/allure-results
+      - "target/allure-results"
 
 testChunkServers test:
   stage: tests
@@ -36,16 +36,16 @@ testChunkServers test:
   script: mvn -x test ChunkServers
   artifacts:
     paths:
-      -target/allure-results
+      - "target/allure-results"
 
 allure report:
   stage: allure
 #  allow_failure: true
   script:
     - ./maven allure generate
-    - - echo "Allure report live here - https://${CI_PROJECT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_NAME}/-/jobs/${CI_JOB_ID}/artifacts/target/site/allure-maven-plugin/index.html"
+    - echo "Allure report live here - https://${CI_PROJECT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_NAME}/-/jobs/${CI_JOB_ID}/artifacts/target/site/allure-maven-plugin/index.html"
   artifacts:
     when: always
     paths:
-      - target/allure-report/*
+      - "target/allure-report/*"
 
