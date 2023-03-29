@@ -273,9 +273,6 @@ public class Nodes {
                 .contentType("application/json")
                 .when()
                 .get("/api/v2/nodes/059ac5a5-0724-4d66-a09b-a9163ba00859/default_mds_ipaddr/");
-        //https://d9d81f0e-389f-414d-87ab-009b1e420516.mock.pstmn.io/api/v2/1/nodes/{{node_id}}/default_mds_ipaddr/
-        //incorrect uri in documentation
-        //{node_id} not needed in request
         try {
             response.then()
                     .assertThat()

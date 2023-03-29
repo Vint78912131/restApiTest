@@ -1,3 +1,4 @@
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +13,12 @@ public class Tasks {
 
     @Test
     @DisplayName("Get Tasks info list")
+    @Epic(value = "Tasks")
+    @Story("Tasks")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#b6a6b8d8-b7c4-4c30-9232-2046aff84e2e")
+    @Feature("Get Tasks info list")
+    @Description("Get Tasks info list")
+    @Severity(SeverityLevel.MINOR)
     public void getTasksInfo () {
         Response response = RestAssured
                 .given()
@@ -36,6 +43,12 @@ public class Tasks {
 
     @Test
     @DisplayName("Get Task info by id")
+    @Epic(value = "Tasks")
+    @Story("Tasks")
+    @Link("https://documenter.getpostman.com/view/607407/UVRGFjMf#dbb04b36-3f63-46b5-8e28-ad608fd0345c")
+    @Feature("Get Task info by id")
+    @Description("Get Task info by id")
+    @Severity(SeverityLevel.MINOR)
     public void getTaskInfoBy () {
         Response response = RestAssured
                 .given()
