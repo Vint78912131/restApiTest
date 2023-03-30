@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
-    <allure-testng.version>2.10.0</allure-testng.version>
+    <allure-testng.version>2.12.0</allure-testng.version>
     <aspectj.version>1.9.19</aspectj.version>
   </properties>
 
@@ -143,7 +143,7 @@ on -->
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
-        <version>2.10.0</version>
+        <version>${allure-testng.version}</version>
         <configuration>
           <reportVersion>${allure-testng.version}</reportVersion>
         </configuration>
