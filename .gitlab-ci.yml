@@ -1,8 +1,8 @@
 image: Apache Maven 3.9.1
-
-default:
-  tags:
-    - shell
+#
+#default:
+#  tags:
+#    - shell
 
 stages:
   - tests
